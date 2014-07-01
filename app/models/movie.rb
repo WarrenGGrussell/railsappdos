@@ -19,7 +19,6 @@ class Movie < ActiveRecord::Base
   validates :release_date,
     presence: true
 
-  validates :review, numericality: {greater_than: 0}
   validate :release_date_is_in_the_future
 
   def review_average
