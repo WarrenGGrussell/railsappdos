@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   validates :password_digest
     presence: true
+
+    def full_name
+      "#{firstname} #{lastname}"
+    end
 end
