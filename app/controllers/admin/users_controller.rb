@@ -8,6 +8,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+
   end
 
   def create
@@ -29,11 +31,7 @@ class Admin::UsersController < ApplicationController
 
   def non_admin
     if !(session[:user_id] && current_user.is_admin)
-      redirect_to movies_path, notice: "Access Denied SUCKA!! YOU AINT NO ADMIN yo!"
+      redirect_to movies_path, notice: "ACCESS DENIED SUCKA!! YOU AINT NO ADMIN yo!"
     end
-  end
-
-
-  
-  
+  end  
 end
