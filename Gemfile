@@ -30,6 +30,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem "rmagick"
 gem "carrierwave"
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'

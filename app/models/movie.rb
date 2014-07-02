@@ -14,8 +14,6 @@ class Movie < ActiveRecord::Base
   validates :description,
     presence: true
 
-  
-
   validates :release_date,
     presence: true
 
@@ -25,6 +23,11 @@ class Movie < ActiveRecord::Base
     reviews.sum(:ratings_out_of_ten)/reviews.size
   end
 
+  def self.search(query)
+    q = query
+    @result = Movie.where("title like :q or description like :q or director like :q", q: q)
+  end
+  
   protected
 
   def release_date_is_in_the_future

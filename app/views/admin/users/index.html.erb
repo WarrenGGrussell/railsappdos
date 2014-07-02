@@ -1,6 +1,8 @@
 <h1>Look at me! I'm an admin</h1>
 <h2><p> All Users </p></h2>
 
+<%= paginate @users %>
+
 <% @users.each do |user| %>
   <p><%= user.firstname %> <%= user.lastname %></p>
 
