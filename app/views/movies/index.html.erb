@@ -5,11 +5,23 @@
 
 <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Movies" %>
+
+
+Duration: <%= select_tag :duration, 
+    options_for_select({
+      'Any' => '0',
+      'Under 90 minutes' => '1',
+      'Between 90 and 120 minutes' => '2',
+      'Over 120 minutes' => '3'
+      }, params[:duration]) %>
+
+
   <%= submit_tag "Search", :name => nil %>
 <% end %>
 
 
 <hr>
+
 <% @movies.each do |movie| %>
   
 <%= link_to image_tag(movie.image_url(:thumb)), movie_path(movie) %>

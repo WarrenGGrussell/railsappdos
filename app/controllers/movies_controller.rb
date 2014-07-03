@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
+
   def index
-    if params[:search]
+    if params[:search] && (params[:search].length > 0)
       @movies = Movie.search(params[:search]).order("created_at DESC")
-    else
-    @movies = Movie.all 
+    elsif params[:duration]
+      @movies = Movie.filter_by_duration(params[:duration])
+   else
+      @movies = Movie.all 
     end
   end
 
@@ -52,6 +55,4 @@ protected
       :title, :release_date, :director, :runtime_in_minutes, :image, :remote_image_url, :description
       )
   end
-
-
 end

@@ -27,6 +27,18 @@ class Movie < ActiveRecord::Base
     q = query
     @result = Movie.where("title like :q or description like :q or director like :q", q: q)
   end
+
+  def self.filter_by_duration(duration)
+    if duration == '0'
+      self.all
+    elsif duration == '1'
+      self.where("movies.runtime_in_minutes <= 90")
+    elsif duration == '2'
+      self.where("movies.runtime_in_minutes BETWEEN 90 AND 120")
+    elsif duration == '3'
+      self.where("movies.runtime_in_minutes >= 120")
+    end
+  end
   
   protected
 
