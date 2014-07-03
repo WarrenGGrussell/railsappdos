@@ -1,0 +1,9 @@
+<h1> Details for Users </h1>
+<%= link_to "Back to All Users", admin_users_path %> <br>
+<%= link_to "All Movies", movies_path %>
+<h1><%= @user.full_name %> <br>
+    <%= @user.email %>
+</h1>
+<h3>You can delete this User if you want. Admin has the power</h3>
+<%= link_to "Delete", admin_user_path(@user),
+method: :delete, confirm: "You sure?"%>

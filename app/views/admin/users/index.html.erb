@@ -1,9 +1,11 @@
-<h1>Look at me! I'm an admin</h1>
-<h2><p> All Users </p></h2>
+<h1>Look at me! I'm an admin. This is my Page</h1>
+<%= link_to "Back to Movies", movies_path %>
+<h2><p> All Users On this Baller Rails website</p></h2>
 
 <%= paginate @users %>
 
 <% @users.each do |user| %>
-  <p><%= user.firstname %> <%= user.lastname %></p>
+  <h2><p><%= user.firstname %> <%= user.lastname %></p></h2>
+  <%= link_to "profile", admin_user_path(user) %>
 
 <% end %>

@@ -8,8 +8,12 @@ class Admin::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(1)
+    @users = User.all.page(params[:page]).per(3)
 
+  end
+
+  def show
+    @user = User.find_by_id(params[:id])
   end
 
   def create
@@ -20,6 +24,16 @@ class Admin::UsersController < ApplicationController
       redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!"
     else
       render :new
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:success] = "User is GONEEEEE"
+      redirect_to admin_users_path, notice: "User #{user.firstname} was deltete"
+    else
+      redirect_to admin_users_path
     end
   end
    

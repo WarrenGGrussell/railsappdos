@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
+  
   def new
+    if session[:user_id] 
+      redirect_to movies_path, notice: "monkey monkey monkey"
+    end
   end
 
   def create
@@ -9,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
-      flash.now[:alert] = "Log in failed..."
+      flash.now[:alert] = "Log in failed sucka..."
       render :new
     end
   end
