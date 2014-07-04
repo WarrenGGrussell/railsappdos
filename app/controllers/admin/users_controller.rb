@@ -31,7 +31,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = "User is GONEEEEE"
-      redirect_to admin_users_path, notice: "User #{user.firstname} was deltete"
+      redirect_to admin_users_path, notice: "User #{@user.firstname} was deleted"
     else
       redirect_to admin_users_path
     end
